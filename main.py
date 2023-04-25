@@ -1,6 +1,6 @@
 import sys
-import networkx as nx
-
+import time
+  
 class Graph():
   
     def __init__(self, vertices):
@@ -19,8 +19,9 @@ class Graph():
     def minDistance(self, dist, sptSet):
   
         # Initialize minimum distance for next node
-        min = sys.maxsize
         global min_index
+        min = sys.maxsize
+  
         # Search not nearest vertex not in the
         # shortest path tree
         for u in range(self.V):
@@ -45,7 +46,6 @@ class Graph():
             # the set of vertices not yet processed.
             # x is always equal to src in first iteration
             x = self.minDistance(dist, sptSet)
-            # print(x)
   
             # Put the minimum distance vertex in the
             # shortest path tree
@@ -63,6 +63,11 @@ class Graph():
         # self.printSolution(dist)
         print("result distance is {}".format(dist[len(dist)-1]))
 
+def setWayArray(txt):
+    way = filter(None,txt.split("\n"))
+    arr = [l.split(" ") for l in [l for l in way]]
+    return arr
+
 def checkNeighbor(arr,row,column):
     neighborList = []
     m = len(arr)-1
@@ -79,7 +84,8 @@ def checkNeighbor(arr,row,column):
 
 # Driver's code
 if __name__ == "__main__":
-    file = open("in-1.txt", "r").read()
+    start = time.time()
+    file = open("in-4.txt", "r").read()
     way = filter(None,file.split("\n"))
     arr = [l.split(" ") for l in [l for l in way]]
 
@@ -105,3 +111,5 @@ if __name__ == "__main__":
     # print(g.graph)
     
     g.dijkstra(0,first_weight)
+    end = time.time()
+    print("runtime: {} seconds".format(str(end - start)))
