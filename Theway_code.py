@@ -82,7 +82,7 @@ def checkNeighbor(arr,row,column):
 
 # Driver's code
 if __name__ == "__main__":
-    file = open("in-4.txt", "r").read()
+    file = open("in-1.txt", "r").read()
     way = filter(None,file.split("\n"))
     arr = [l.split(" ") for l in [l for l in way]]
 
